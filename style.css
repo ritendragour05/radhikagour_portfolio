@@ -1,0 +1,36 @@
+:root {
+            --primary-color: #38bdf8;
+            --secondary-glow: rgba(56, 189, 248, 0.4);
+            --dark-bg: #020617;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- PARTICLES BACKGROUND --- */
+        #tsparticles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 25px 0;
+        }
+@media (max-width: 576px) {
+    footer p {
+        font-size: 13px;
+    }
+}

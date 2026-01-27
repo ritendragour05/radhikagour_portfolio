@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radhika Gour | Portfolio</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        
+
+        /* --- HERO SECTION --- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            margin-top: 60px;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            z-index: 10;
+        }
+
+        .hero-text {
+            max-width: 700px;
+            margin: 20px auto;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+
+        @media (max-width: 767.98px) {
+            #home {
+                min-height: auto;
+                padding-top: 30px;
+            }
+        }
+
+        @media(max-width:1027px) {
+            #home {
+                min-height: auto;
+                padding-top: 85px;
+            }
+
+        }
+
+        /* --- MODERN GLASS CARDS --- */
+        .glass-card {
+            /* background: rgba(255, 255, 255, 0.02); */
+            background: rgba(255, 255, 255, 0.03) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-color: var(--primary-color);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-12px) scale(1.02);
+
+            background: rgba(56, 189, 248, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px var(--secondary-glow);
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .glass-card:hover .icon-box {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* --- SKILLS TAGS --- */
+        /* Skill Section Specific Enhancements */
+        .skill-box {
+            padding: 30px 20px !important;
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(56, 189, 248, 0.1) !important;
+            height: 100%;
+        }
+
+        .skill-badge {
+            background: rgba(56, 189, 248, 0.08) !important;
+            border: 1px solid rgba(56, 189, 248, 0.2) !important;
+            padding: 8px 16px !important;
+            font-size: 0.85rem !important;
+            border-radius: 8px !important;
+            margin: 0 !important;
+            /* Gap handled by parent flex */
+            color: #e2e8f0;
+        }
+
+        .skill-badge:hover {
+            background: var(--primary-color) !important;
+            color: #020617 !important;
+            box-shadow: 0 0 15px var(--secondary-glow) !important;
+        }
+
+        /* Icons styling (Optional: Add Bootstrap Icons link in head) */
+        .skill-box h5 i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Middle card highlighted look */
+        .active-skill {
+            border-color: var(--primary-color) !important;
+            background: rgba(56, 189, 248, 0.05) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 25px;
+            border-radius: 50px;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: #020617;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px var(--secondary-glow);
+      
+        }
+
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none; /* 🔥 important */
+}
+
+.project-overlay a,
+.project-overlay button {
+    pointer-events: auto; /* 🔥 button clickable */
+    position: relative;
+    z-index: 3;
+}
+
+.project-img {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+
+
+
+        .project-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: 0.4s;
+            transform: translateY(20px);
+             pointer-events: none;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+
+        /* Category Wise Visibility */
+        .project-item {
+            transition: all 0.4s ease;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Section Title Gradient */
+        .section-title {
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- SECTION TITLES --- */
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 60px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* .navbar {
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        } */
+
+        .btn-primary-custom {
+            background: var(--primary-color);
+            color: #020617;
+            border: none;
+            padding: 12px 35px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary-custom:hover {
+            /* background: #fff; */
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tsparticles"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">RADHIKA GOUR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">My Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">My SKills</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="home">
+        <div class="container text-center hero-content">
+            <h1 class="display-1 fw-bold mb-4" data-aos="zoom-out">Hi, I'm <span class="text-gradient">Radhika
+                    Gour</span></h1>
+            <h2 class="h2 mb-4">I'm <span id="typed" class="text-info"></span></h2>
+            <p class="hero-text" data-aos="fade-up" data-aos-delay="200">
+                With 8+ years of experience, I help brands, businesses, and creators turn ideas into powerful digital
+                experiences through high-quality design, animation, and modern development solutions.
+            </p>
+            <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
+                <a href="#services" class="btn btn-primary-custom rounded-pill">Explore My Expertise</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title display-4" data-aos="fade-down">What I Do</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card">
+                        <div class="icon-box">📱</div>
+                        <h4>App Development</h4>
+                        <p class="text-secondary">High-performance native and cross-platform mobile solutions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card">
+                        <div class="icon-box">🌐</div>
+                        <h4>Web Development</h4>
+                        <p class="text-secondary">Next-gen web applications built for speed and scalability.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass-card">
+                        <div class="icon-box">🎬</div>
+                        <h4>Video Editing</h4>
+                        <p class="text-secondary">Cinematic storytelling with professional motion graphics.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card">
+                        <div class="icon-box">🎨</div>
+                        <h4>Logo & Branding</h4>
+                        <p class="text-secondary">Visual identities that create lasting brand authority.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card">
+                        <div class="icon-box">📐</div>
+                        <h4>Graphic Design</h4>
+                        <p class="text-secondary">Creative visual assets for print and digital media.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass-card">
+                        <div class="icon-box">🚀</div>
+                        <h4>Digital Marketing</h4>
+                        <p class="text-secondary">Strategic growth hacking and ROI-focused campaigns.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5" data-aos="zoom-in">
+                <button class="btn btn-outline-info rounded-pill px-5 py-2"><a href="#projects" class="text-decoration-none">Explore Projects</a></button>
+            </div>
+        </div>
+    </section>
+    <!------------------------------------skills section---------------------------------------------->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center display-4" data-aos="fade-up">Tech <span
+                    class="text-gradient">Universe</span></h2>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="glass-card skill-box active-skill">
+                        <h5 class="mb-4 text-info fw-bold"><i class="bi bi-code-slash"></i> Development</h5>
+                        <div class="d-flex flex-wrap gap-2 justify-content-center">
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">React.js</span>
+                            <span class="skill-badge">Node.js</span>
+                            <span class="skill-badge">Next.js</span>
+                            <span class="skill-badge">Flutter</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">PHP</span>
+                            <span class="skill-badge">Laravel</span>
+                            <span class="skill-badge">Angular</span>
+                            <div class="skill-badge">React Native</div>
+                            <span class="skill-badge">HTML</span>
+                            <span class="skill-badge">Tailwind CSS</span>
+                            <div class="skill-badge">Vue.js</div>
+                            <div class="skill-badge">Angular</div>
+                            <div class="skill-badge">Bootstrap</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="glass-card skill-box active-skill">
+                        <h5 class="mb-4 text-info fw-bold"><i class="bi bi-palette"></i> Design & UI/UX</h5>
+                        <div class="d-flex flex-wrap gap-2 justify-content-center">
+                            <span class="skill-badge">Figma</span>
+                            <span class="skill-badge">Photoshop</span>
+                            <span class="skill-badge">Illustrator</span>
+                            <span class="skill-badge">CorelDRAW</span>
+                            <span class="skill-badge">After Effects</span>
+                            <span class="skill-badge">Premiere Pro</span>
+                            <span class="skill-badge">Canva</span>
+                            <div class="skill-badge">Adobe Premiere</div>
+                            <div class="skill-badge">Adobe Audition</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="glass-card skill-box active-skill">
+                        <h5 class="mb-4 text-info fw-bold"><i class="bi bi-cpu"></i> Tools & Cloud</h5>
+                        <div class="d-flex flex-wrap gap-2 justify-content-center">
+                            <span class="skill-badge">AWS</span>
+                            <span class="skill-badge">MongoDB</span>
+                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">Git</span>
+                            <div class="skill-badge">Netify</div>
+                            <span class="skill-badge">Wordpress</span>
+                            <div class="skill-badge">Shopify</div>
+                            <span class="skill-badge">Meta Ads</span>
+                            <span class="skill-badge">Google Ads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- projects category-wise -->
+  <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center display-4" data-aos="fade-up">Portfolio <span
+                    class="text-gradient">Showcase</span></h2>
+
+            <div class="text-center mb-4" data-aos="fade-up">
+                <button class="filter-btn active" onclick="filterSelection('all')">All Work</button>
+                <button class="filter-btn"><a href="web-development.html" class="text-decoration-none text-white">Web
+                        Development</a></button>
+                <button class="filter-btn"><a href="app-development.html" class="text-decoration-none text-white">
+                     App Development</a></button>
+                <button class="filter-btn"><a href="digital-marketing.html"
+                        class="text-decoration-none text-white">Digital Marketing</a></button>
+                <button class="filter-btn"><a href="video-editing.html" class="text-decoration-none text-white">Video
+                        Editing</a></button>
+                        <button class="filter-btn"><a href="graphic-design.html" class="text-decoration-none text-white">Graphic Designing</a></button>
+            </div>
+
+            <div class="row g-4" id="projectGrid">
+
+                <div class="col-lg-4 col-md-6 project-item web">
+                    <div class="project-card" data-aos="zoom-in">
+                        <img src="./images/main_page/web2.avif"
+                            class="project-img">
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">Web / E-Commerce
+
+                            </span>
+                            <h4>Fashion Store Pro</h4>
+                            <p class="small text-light">Fashion Store for kids.</p>
+                            <a href="https://eurynome.in/" class="btn btn-sm btn-outline-info">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item web">
+                    <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="./images/main_page/web1.avif"
+                            class="project-img">
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">Web / Job Portal</span>
+                            <h4>CareerHub Portal</h4>
+                            <p class="small text-light">Advanced Search, Resume Builder, Employer Panel.</p>
+                            <a href="https://www.realstaffing.com/en-gb/" class="btn btn-sm btn-outline-info">Visit
+                                Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item web">
+                    <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="./images/main_page/hospital1.avif"
+                            class="project-img">
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">Web / Hospital</span>
+                            <h4>HealthPlus System</h4>
+                            <p class="small text-light">Appointment Booking, Patient Records, Telemedicine.</p>
+                            <a href="https://mayaeyehospital.com/maya-new/" class="btn btn-sm btn-outline-info">Visit
+                                Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item web">
+                    <div class="project-card" data-aos="zoom-in">
+                        <img src="./images/main_page/app1.avif"
+                            class="project-img">
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">App / Food</span>
+                            <h4>QuickBites App</h4>
+                            <p class="small text-light">Live Tracking, Multi-vendor Support, Wallet.</p>
+                            <a href="https://play.google.com/store/apps/details?id=netfoodish.app"
+                                class="btn btn-sm btn-outline-info">Visit App</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item web">
+                    <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="./images/main_page/app2.avif"
+                            class="project-img">
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">Web / Jewellery</span>
+                            <h4>Royal Gems Store</h4>
+                            <p class="small text-light">Luxury UI, 3D Product Viewer, Secure Checkout.</p>
+                            <a href="https://www.naamdiamonds.com/" class="btn btn-sm btn-outline-info">Visit
+                                Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item app">
+                    <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="./images/main_page/jewllery_web.avif"
+                            class="project-img">
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">Web / E-commerce </span>
+                            <h4>E-Commerce Website</h4>
+                            <p class="small text-light">Flutter App for Jewellery Brand.</p>
+                            <a href="https://agrokart.org.in/" class="btn btn-sm btn-outline-info">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 project-item app">
+                    <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="./images/banner/59.jpeg"
+                            class="project-img">
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">Turning ideas into powerful visuals</span>
+                            <h4>Graphics Works</h4>
+                            <p class="small text-light"></p>
+                            <a href="graphic-design.html" class="btn btn-sm btn-outline-info">View More </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item app">
+                    <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="./images/Newbanner/dusk.png"
+                            class="project-img">
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">Turning ideas into powerful visuals</span>
+                            <h4>Graphics Works</h4>
+                            <p class="small text-light"></p>
+                            <a href="graphic-design.html" class="btn btn-sm btn-outline-info">View More </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 project-item app">
+                    <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+
+                        <video class="project-img"
+                            src="https://inforag.com/video-portfolio/promotion%20videos/kasol%20trip.mp4"
+                            controls preload="metadata"></video>
+
+                        <div class="project-overlay">
+                            <span class="badge bg-primary mb-2">Cinematic edits that capture emotion</span>
+                            <h4>Video Editing Works</h4>
+                            <p class="small text-light"></p>
+                            <a href="video-editing.html" class="btn btn-sm btn-outline-info">
+                                View More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer -->
+    <footer class="py-5 text-center mt-5 border-top border-dark">
+        <p class="text-secondary">© 2026 Radhika Gour | Innovating Digital Solutions</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+    <script>
+        // AOS
+        AOS.init({ duration: 1000, once: false });
+
+        // Typing
+        new Typed('#typed', {
+            strings: ['Web Developer,',
+                'App Developer,',
+                'UI/UX Designer,',
+                'Graphic Designer,',
+                'Video Editor,',
+                'Digital Marketer,',],
+            typeSpeed: 60,
+            backSpeed: 40,
+            loop: true
+        });
+
+        // Particles Configuration
+        tsParticles.load("tsparticles", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#38bdf8" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#38bdf8",
+                    opacity: 0.2,
+                    width: 1
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 200, line_linked: { opacity: 0.5 } }
+                }
+            },
+            retina_detect: true
+        });
+
+
+        // Filter Functionality
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("project-item");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                x[i].classList.remove("show");
+                x[i].classList.add("hide");
+                if (x[i].className.indexOf(c) > -1) {
+                    x[i].classList.remove("hide");
+                    x[i].classList.add("show");
+                }
+            }
+            // Active button state
+            var btns = document.getElementsByClassName("filter-btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        }
+
+        // Default: Show all
+        filterSelection("all");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Radhika Gour</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root{
+    --primary-color:#38bdf8;
+    --glass-bg:rgba(255,255,255,0.04);
+    --glass-border:rgba(255,255,255,0.1);
+}
+
+body{
+    background:#020617;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* ---------- HERO ---------- */
+.text-gradient {
+    background: linear-gradient(to right, #fff, var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.dm-hero {
+    padding: 130px 15px 40px;
+    text-align: center;
+}
+
+/* ---------- FILTER BUTTONS ---------- */
+.dm-filter-btn {
+    background: var(--glass-bg);
+    color: white;
+    border: 1px solid var(--glass-border);
+    padding: 10px 22px;
+    border-radius: 50px;
+    margin: 6px;
+    transition: 0.3s;
+    font-size: 0.85rem;
+}
+
+.dm-filter-btn:hover,
+.dm-filter-btn.active {
+    background: var(--primary-color);
+    color: #020617;
+    box-shadow: 0 0 20px rgba(56,189,248,0.4);
+    font-weight: 600;
+}
+
+/* ---------- CARD ---------- */
+.dm-card {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    height: 100%;
+    backdrop-filter: blur(15px);
+}
+
+.dm-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+}
+
+/* ---------- IMAGE ---------- */
+.dm-img-box {
+    height: 320px;
+    overflow: hidden;
+}
+
+.dm-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s;
+    cursor: zoom-in;
+}
+
+.dm-card:hover img {
+    transform: scale(1.08);
+}
+
+/* ---------- INFO ---------- */
+.dm-info {
+    padding: 28px;
+}
+
+.dm-category-tag {
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.dm-action-btn {
+    background: var(--primary-color);
+    color: #020617;
+    padding: 10px 26px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 18px;
+    transition: 0.3s;
+}
+
+.dm-action-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* ---------- PRIVACY NOTE ---------- */
+.privacy-alert {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.2);
+    color: #fca5a5;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    display: none;
+    font-size: 0.9rem;
+}
+
+/* ---------- POPUP ---------- */
+.img-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.img-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.img-popup img {
+    max-width: 92%;
+    max-height: 92%;
+    border-radius: 18px;
+    box-shadow: 0 0 40px rgba(56,189,248,0.4);
+}
+
+.img-popup-close {
+    position: absolute;
+    top: 18px;
+    right: 26px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 40px 10px;
+    margin-top: 80px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:991px){
+    .dm-img-box{height:280px;}
+}
+
+@media(max-width:768px){
+    .dm-hero{padding-top:110px;}
+    .dm-img-box{height:240px;}
+}
+
+@media(max-width:576px){
+    .dm-img-box{height:220px;}
+    .dm-info{padding:22px;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="tsparticles"></div>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<div class="container">
+<a class="navbar-brand fw-bold" href="index.html">RADHIKA GOUR</a>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="index.html#projects">My Projects</a></li>
+<li class="nav-item"><a class="nav-link" href="index.html#skills">My Skills</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<section class="dm-hero">
+<div class="container">
+<h1 class="display-3 text-gradient" data-aos="zoom-in">Digital Marketing</h1>
+<p class="text-secondary" data-aos="fade-up">SEO, Social Media & Performance Campaigns</p>
+</div>
+</section>
+
+<div class="container pb-5">
+<div class="text-center mb-5">
+<button class="dm-filter-btn active" onclick="renderDM('all')">All Works</button>
+<button class="dm-filter-btn" onclick="renderDM('SEO Optimization')">SEO</button>
+<button class="dm-filter-btn" onclick="renderDM('Social Media Marketing')">Social Media</button>
+<button class="dm-filter-btn" onclick="renderDM('Performance Marketing')">Ads & Performance</button>
+</div>
+
+<div id="dm-privacy-note" class="privacy-alert text-center mx-auto" style="max-width:600px;">
+<i class="fas fa-lock me-2"></i> Note: Some Ads & performance data is restricted due to client privacy.
+</div>
+
+<div class="row g-4" id="dmGridContainer"></div>
+</div>
+
+<footer class="text-center">
+<p class="text-secondary">© 2026 Radhika Gour | Innovating Digital Solutions</p>
+</footer>
+
+<!-- IMAGE POPUP -->
+<div id="imgPopup" class="img-popup">
+<span class="img-popup-close">&times;</span>
+<img id="popupImg">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+<!-- <script>
+AOS.init({duration:1000,once:true});
+</script> -->
+
+
+<script>
+        AOS.init({ duration: 1000, once: true });
+
+        const portfolioData = {
+             "SEO Optimization": [
+            { img: "./images/digitalmarketing_img/BA repair.png", title: "BA Repair SEO Boost", link: "https://www.google.com/search?q=b+a+repairs" },
+            { img: "./images/digitalmarketing_img/prakhar art.png", title: "Pakhar Art Solution SEO Boost", link: "https://www.google.com/search?q=prakhar+art+solutions" },
+            { img: "./images/digitalmarketing_img/codesikho.png", title: "Code Sikha SEO", link: "https://www.google.com/search?q=code+sikha" },
+            { img: "./images/digitalmarketing_img/manthan.png", title: "Mathan SEO Boost", link: "https://www.google.com/search?q=manthan+stone" },
+            { img: "./images/digitalmarketing_img/sayoori woman.png", title: "Sayoori Woman SEO Boost", link: "https://www.google.com/search?q=sayoori+woman" },
+            { img: "./images/digitalmarketing_img/cheat code.png", title: "Chitcodes technologies SEO Boost", link: "https://www.google.com/search?q=chit+codes+technologies" },
+            { img: "./images/digitalmarketing_img/uk.png", title: "UK Services SEO Boost", link: "https://www.google.com/search?q=uk+service" },
+            { img: "./images/digitalmarketing_img/metawishAI.png", title: "MetaWish AI SEO Boost", link: "https://www.google.com/search?q=metawish+ai" },
+            { img: "./images/digitalmarketing_img/eskillsweb.png", title: "E-Skills Web SEO Boost", link: "https://www.google.com/search?q=eskillsweb" },
+            { img: "./images/digitalmarketing_img/vectorskillacademy.png", title: "Vector Skill Academy SEO Boost", link: "https://www.google.com/search?q=vector+skill+academy" },
+            { img: "./images/digitalmarketing_img/best policy bazar.png", title: "Best property bazar SEO Boost", link: "https://www.google.com/search?q=best+property+bazar" },
+            { img: "./images/digitalmarketing_img/eurynome.png", title: "Eurynome SEO Boost", link: "https://www.google.com/search?q=Eurynome+Apparels" },
+            { img: "./images/digitalmarketing_img/inforag.png", title: "Inforag technology SEO Growth", link: "https://www.google.com/search?q=Inforag+technology" },
+            { img: "./images/digitalmarketing_img/code of school.png", title: "Code Of School Local SEO Growth", link: "https://www.google.com/search?q=code+of++school" },
+            { img: "./images/digitalmarketing_img/patchline.png", title: "Patchline Technologies SEO Growth", link: "https://www.google.com/search?q=patchline+technologies" },
+            { img: "./images/digitalmarketing_img/swastikmarbles.png", title: "Swastik Marbles SEO Growth", link: "https://www.google.com/search?q=swastik+marbles" },
+        ],
+            "Social Media Marketing": [
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/pigasus.png", link: "https://www.instagram.com/pegasus4kids/" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/visioniasacademyindore.png", link: " https://www.instagram.com/visioniasacademyindore/" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/victoryskill.png", link: " https://www.instagram.com/vectorskillacademy/" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/ekskillsweb.png", link: " https://www.instagram.com/eskillsweb" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/ladhidh_mandi.png", link: " https://www.instagram.com/ladhidh_mandi/" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/gamicsinstitute.png", link: " https://www.instagram.com/gamicsinstitute/" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/oysta_entertainment.png", link: "https://www.instagram.com/oysta_entertainment/" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/swaraj_coaching_institute.png", link: "https://www.instagram.com/swaraj_coaching_institute/" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/codeofschool.png", link: "https://www.instagram.com/codeofschool/" },
+                { title: "Instagram Brand Awareness", img: "./images/digitalmarketing_img/official_upgradindore.png", link: "https://www.instagram.com/official_upgradindore/" }
+            ],
+            "Performance Marketing": [
+                { title: "Meta-Ad Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/Meta Ads.jpeg" },
+                { title: "E-commerce PPC Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/perimg4.jpeg" },
+                { title: "Lead Generation Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/perimg1.jpeg" },
+                { title: "Lead Generation Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/perimg2.jpeg" },
+                { title: "Lead Generation Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/perimg3.jpeg" },
+                { title: "Lead Generation Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/perimg5.jpeg" },
+                { title: "Lead Generation Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/perimg8.jpeg" },
+                { title: "Lead Generation Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/perimg6.jpeg" },
+                { title: "Lead Generation Campaign", img: "./images/digitalmarketing_img/performancemarketing_img/perimg7.jpeg" }
+            ],
+        };
+
+        function renderDM(category) {
+            const container = document.getElementById('dmGridContainer');
+            const note = document.getElementById('dm-privacy-note');
+            container.innerHTML = '';
+
+            // Toggle Note visibility
+            note.style.display = (category === "Performance Marketing") ? "block" : "none";
+
+            for (let cat in portfolioData) {
+                if (category === 'all' || category === cat) {
+                    portfolioData[cat].forEach(item => {
+                        container.innerHTML += `
+                            <div class="col-lg-6 col-md-12" data-aos="fade-up">
+                                <div class="dm-card">
+                                    <div class="dm-img-box">
+                                        <img src="${item.img}" alt="${item.title}">
+                                    </div>
+                                    <div class="dm-info">
+                                        <span class="dm-category-tag">${cat}</span>
+                                        <h4 class="text-white">${item.title}</h4>
+                                        ${item.link ? `<a href="${item.link}" target="_blank" class="dm-action-btn">Live View</a>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            }
+
+            // Update Active State
+            if(event) {
+                document.querySelectorAll('.dm-filter-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+
+       tsParticles.load("tsparticles", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#38bdf8" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#38bdf8",
+                    opacity: 0.2,
+                    width: 1
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 200, line_linked: { opacity: 0.5 } }
+                }
+            },
+            retina_detect: true
+        });
+        // Initial Load showing all works
+        renderDM('all');
+
+
+      
+    const popup = document.getElementById("imgPopup");
+    const popupImg = document.getElementById("popupImg");
+    const closeBtn = document.querySelector(".img-popup-close");
+
+    // Open popup on IMAGE CLICK
+    document.addEventListener("click", function (e) {
+        const img = e.target.closest(".dm-img-box img");
+        if (!img) return;
+
+        popupImg.src = img.src;
+        popup.classList.add("active");
+        document.body.style.overflow = "hidden"; // prevent background scroll
+    });
+
+    // Close popup (X button)
+    closeBtn.addEventListener("click", closePopup);
+
+    // Close popup on outside click
+    popup.addEventListener("click", function (e) {
+        if (e.target === popup) closePopup();
+    });
+
+    // ESC key close
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closePopup();
+    });
+
+    function closePopup() {
+        popup.classList.remove("active");
+        document.body.style.overflow = "auto";
+    }
+
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radhika Gour | Logo & Branding Portfolio</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-color: #38bdf8;
+            --dark-bg: #020617;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        #tsparticles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .navbar {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .hero-section {
+            padding: 140px 0 60px;
+            text-align: center;
+            /* background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, transparent 70%); */
+        }
+
+        /* --- Filter Buttons --- */
+        .filter-btn {
+            background: var(--glass-bg);
+            color: white;
+            border: 1px solid var(--glass-border);
+            padding: 12px 28px;
+            border-radius: 50px;
+            margin: 5px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: #020617;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* --- Branding Cards --- */
+        .design-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: 0.4s ease-in-out;
+            height: 100%;
+            backdrop-filter: blur(15px);
+        }
+
+        .design-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .design-img-box {
+            height: 350px;
+            overflow: hidden;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .design-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: 0.6s;
+            padding: 20px;
+        }
+
+        .design-card:hover .design-img-box img {
+            transform: scale(1.05);
+        }
+
+        .design-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .cat-tag {
+            font-size: 0.7rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tsparticles"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">RADHIKA GOUR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">My Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#skills">My SKills</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-3 text-gradient" data-aos="zoom-in">Brand Identity</h1>
+            <p class="text-secondary" data-aos="fade-up">Minimalist Logos & Visual Branding Projects</p>
+        </div>
+    </section>
+
+    <div class="container pb-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <button class="filter-btn active" onclick="renderLogos('all')">All Designs</button>
+            <button class="filter-btn" onclick="renderLogos('minimal')">Minimal Logos</button>
+            <button class="filter-btn" onclick="renderLogos('branding')">Full Branding</button>
+            <button class="filter-btn" onclick="renderLogos('mascot')">Mascot Logos</button>
+        </div>
+
+        <div class="row g-5" id="logoGridContainer">
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <p class="text-secondary">© 2026 Radhika Gour | Innovating Digital Solutions</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        const logoData = {
+            minimal: [
+                { src: "./images/logo/01.jpeg", title: "Corporate Minimal" },
+                { src: "./images/logo/02.jpeg", title: "Modern Abstract" },
+                { src: "./images/logo/03.jpeg", title: "Geometric Mark" },
+                { src: "./images/logo/07.jpeg", title: "Clean Lettermark" },
+                { src: "./images/logo/18.png", title: "Tech Identity" },
+                { src: "./images/logo/34.png", title: "Creative Agency" },
+                { src: "./images/logo/23.png", title: "Luxury Symbol" },
+                { src: "./images/logo/15.png", title: "Minimal Badge" },
+                { src: "./images/logo/16.png", title: "Eco Logo" },
+                { src: "./images/logo/19.png", title: "Soft Brand" },
+                { src: "./images/logo/20.png", title: "Bold Typography" },
+                { src: "./images/logo/21.png", title: "Abstract Flow" },
+                { src: "./images/logo/22.png", title: "Symmetry Design" },
+                { src: "./images/logo/24.png", title: "Urban Icon" },
+            ],
+            branding: [
+                { src: "./images/branding_image/Berrica Super 1.png", title: "Berrica Super Pack" },
+                { src: "./images/branding_image/Berrica Super 2.png", title: "Berrica Identity" },
+                { src: "./images/branding_image/Cough Fighter 1.png", title: "Cough Fighter Design" },
+                { src: "./images/branding_image/Detoxym 1.png", title: "Detoxym Brand Kit" },
+                { src: "./images/branding_image/Femtone 1.PNG", title: "Femtone Health Care" },
+                { src: "/images/branding_image/Herbveda 1.png", title: "Herbveda Natural" },
+                { src: "./images/branding_image/Insuveda 1.png", title: "Insuveda Pharma" },
+                { src: "./images/branding_image/Liver Port DS 1.png", title: "Liver Port Branding" },
+                { src: "./images/branding_image/Man Core 1.png", title: "Man Core Fitness" },
+                { src: "./images/branding_image/Panorid Oil 1.png", title: "Panorid Product Design" },
+                { src: "./images/branding_image/Stabo Juice 1.png", title: "Stabo Beverage Kit" },
+                { src: "./images/branding_image/Stone Blaster 1.png", title: "Stone Blaster Medical" },
+            ],
+            mascot: [
+                { src: "./images/logo/05.jpeg", title: "Gamer Mascot" },
+                { src: "./images/logo/04.jpeg", title: "Character Design" },
+                { src: "./images/logo/06.jpeg", title: "Sports Mascot" },
+                { src: "./images/logo/08.jpeg", title: "Food Brand Mascot" },
+                { src: "./images/logo/25.png", title: "Fun Character" },
+                { src: "./images/logo/26.jpg", title: "E-Sports Logo" },
+                { src: "./images/logo/27.png", title: "Cartoon Icon" },
+            ]
+        };
+
+        function renderLogos(category) {
+            const container = document.getElementById('logoGridContainer');
+            container.innerHTML = '';
+
+            for (let cat in logoData) {
+                if (category === 'all' || category === cat) {
+                    logoData[cat].forEach(item => {
+                        container.innerHTML += `
+                            <div class="col-lg-6 col-md-12" data-aos="fade-up">
+                                <div class="design-card">
+                                    <div class="design-img-box">
+                                        <img src="${item.src}" alt="${item.title}">
+                                    </div>
+                                    <div class="design-info">
+                                        <span class="cat-tag">${cat}</span>
+                                        <h4 class="text-white">${item.title}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            }
+
+            // Update active state
+            if (event && event.target) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+
+        tsParticles.load("tsparticles", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#38bdf8" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#38bdf8",
+                    opacity: 0.2,
+                    width: 1
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 200, line_linked: { opacity: 0.5 } }
+                }
+            },
+            retina_detect: true
+        });
+        // Initial render
+        renderLogos('all');
+    </script>
+</body>
+
+</html>
